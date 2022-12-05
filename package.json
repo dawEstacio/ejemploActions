@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/dawEstacio/ejemploActions/issues"
   },
-  "homepage": "https://github.com/dawEstacio/ejemploActions#readme"
+  "homepage": "https://github.com/dawEstacio/ejemploActions#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
 }
