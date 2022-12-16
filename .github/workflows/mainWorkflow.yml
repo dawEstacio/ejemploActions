@@ -8,10 +8,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: github/super-linter@v4
-        env:
-          DEFAULT_BRANCH: main
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          LINTER_RULES_PATH: /
-          JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
-          VALIDATE_JAVASCRIPT_ES: true
+      # - uses: github/super-linter@v4
+      #   env:
+      #     DEFAULT_BRANCH: main
+      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      #     LINTER_RULES_PATH: /
+      #     JAVASCRIPT_ES_CONFIG_FILE: .eslintrc.js
+      #     VALIDATE_JAVASCRIPT_ES: true
+      - name: Send mail
+        uses: dawidd6/action-send-mail@v3
+        with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{secrets.EMAIL}}
+          # Optional (recommended) mail server password:
+          password: ${{secrets.PASSWORD}}
+          # Required mail subject:
+          subject: Github Actions job result
+          # Required recipients' addresses:
+          to: pvidalsalvador@gmail.com
+          # Required sender full name (address can be skipped):
+          from: Luke Skywalker # <user@example.com>
+          # Optional plain body:
+          body: Build job of ${{github.repository}} completed successfully!
